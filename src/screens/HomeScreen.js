@@ -11,9 +11,9 @@ import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
 
 const HomeScreen = ({ match }) => {
-  const keyword = match.params.keyword
+  const keyword = match?.params.keyword;
 
-  const pageNumber = match.params.pageNumber || 1
+  const pageNumber = match?.params.pageNumber || 1;
 
   const dispatch = useDispatch()
 
@@ -25,38 +25,44 @@ const HomeScreen = ({ match }) => {
   }, [dispatch, keyword, pageNumber])
 
   return (
-    <>
-      <Meta />
-      {!keyword ? (
-        <div></div>
-      ) : (
-        <Link to='/' className='btn btn-light'>
-          Go Back
-        </Link>
-      )}
-      <h1>Latest Products</h1>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant='danger'>{error}</Message>
-      ) : (
-        <>
-          <Row>
-            {products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
-              </Col>
-            ))}
-          </Row>
-          <Paginate
-            pages={pages}
-            page={page}
-            keyword={keyword ? keyword : ''}
-          />
-        </>
-      )}
-    </>
-  )
+		<>
+			<Meta />
+			{!keyword ? (
+				<div></div>
+			) : (
+				<Link to="/" className="btn btn-light">
+					Go Back
+				</Link>
+			)}
+			<h1>Latest Products</h1>
+			{loading ? (
+				<Loader />
+			) : error ? (
+				<Message variant="danger">{error}</Message>
+			) : (
+				<>
+					<Row>
+						{products?.map((product) => (
+							<Col
+								key={product._id}
+								sm={12}
+								md={6}
+								lg={4}
+								xl={3}
+							>
+								<Product product={product} />
+							</Col>
+						))}
+					</Row>
+					<Paginate
+						pages={pages}
+						page={page}
+						keyword={keyword ? keyword : ''}
+					/>
+				</>
+			)}
+		</>
+	);
 }
 
 export default HomeScreen

@@ -1,6 +1,6 @@
 {
 	"name": "frontend",
-	"proxy": "https://serviscall-server.vercel.app",
+	"proxy": "https://serviscall-server.vercel.app/",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {

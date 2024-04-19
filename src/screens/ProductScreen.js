@@ -135,7 +135,7 @@ const ProductScreen = ({ history, match }) => {
 															...Array(
 																product.countInStock,
 															).keys(),
-														].map((x) => (
+														]?.map((x) => (
 															<option
 																key={x + 1}
 																value={x + 1}
